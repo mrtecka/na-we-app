@@ -1,0 +1,24 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+
+.mobile-header {
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  background-color: $light-bg;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  @include dimensions;
+
+  @include tablet {
+    display: none;
+  }
+
+  &__logo {
+    width: 6.5rem;
+  }
+}

@@ -1,0 +1,94 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+
+.header {
+  height: 100%;
+  width: 25%;
+  position: fixed;
+  left: 0;
+  background-color: $primary-text;
+  display: none;
+  padding: 2.5rem 1rem;
+  max-width: 20rem;
+
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  @include desktop {
+    padding: 2.5rem 1.5rem;
+  }
+
+  &__logo {
+    width: 6rem;
+    margin-bottom: 4rem;
+
+    @include desktop {
+      width: 7.5rem;
+    }
+  }
+
+  &__user {
+    display: flex;
+    gap: 0.5rem;
+    position: absolute;
+    bottom: 3rem;
+
+    &-avatar {
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: $light-bg;
+      border-radius: 50%;
+    }
+
+    &-info {
+      color: $light-bg;
+
+      &--other {
+        font-weight: 300;
+        font-size: 0.75rem;
+        color: $light-bg;
+      }
+
+      &-container {
+        @include flex-column;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+.nav {
+  @include flex-column;
+  gap: 1rem;
+
+  &-link {
+    color: $light-bg;
+    text-decoration: none;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-weight: 300;
+    height: 2.5rem;
+
+    &:hover {
+      background-color: $light-bg;
+      color: $primary-text;
+      border-left: 0.5rem solid $brand;
+      width: calc(100% + 1.5rem);
+      margin-left: -1rem;
+
+      @include desktop {
+        width: calc(100% + 3.5rem);
+        margin-left: -1.5rem;
+      }
+    }
+
+    &__icon {
+      width: 1.25rem;
+    }
+  }
+}

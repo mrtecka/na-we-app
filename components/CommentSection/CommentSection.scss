@@ -1,0 +1,17 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.comments {
+  padding: 0.5rem 0 0 1rem;
+
+  &__text {
+    font-size: 14px;
+    color: $secondary-text;
+
+    &--hidden {
+      display: none;
+    }
+  }
+}

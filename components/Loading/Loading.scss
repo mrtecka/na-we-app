@@ -1,0 +1,32 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/breakpoints" as *;
+
+.container {
+  background-color: $light-bg;
+  @include flex-column;
+  height: calc(100vh - 5rem);
+  justify-content: center;
+  align-items: center;
+
+  @include tablet {
+    background-color: $webapp-bg;
+  }
+}
+
+.logo {
+  width: 6rem;
+  animation: fadeInOut ease-in-out 2s infinite alternate-reverse;
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.2;
+    }
+  }
+}

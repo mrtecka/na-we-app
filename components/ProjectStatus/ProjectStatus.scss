@@ -1,0 +1,26 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/colors" as *;
+
+.project-status {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $not-started-text;
+
+  @include tablet {
+    font-size: 0.9rem;
+  }
+
+  &--in-progress {
+    color: $in-progress-text;
+  }
+
+  &--completed {
+    color: $completed-text;
+  }
+
+  &--cancelled {
+    color: $cancelled-text;
+  }
+}

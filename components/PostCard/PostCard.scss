@@ -1,0 +1,90 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/breakpoints" as *;
+
+.pc {
+  border-bottom: 2px solid $nav-border;
+  padding-bottom: 0.5rem;
+
+  @include desktop {
+    border-bottom: none;
+  }
+
+  &-container {
+    @include flex-column;
+    gap: 0.5rem;
+    padding: 1rem 1.25rem;
+
+    @include desktop {
+      gap: 0.75rem;
+      padding: 1.5rem 5rem;
+      max-width: 50rem;
+    }
+  }
+
+  &__metadata {
+    display: flex;
+    gap: 1rem;
+
+    &-avatar {
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: lightgray;
+      border-radius: 50%;
+    }
+
+    &-container {
+      @include flex-column;
+      padding-bottom: 1rem;
+    }
+
+    &-text {
+      &--other {
+        color: $secondary-text;
+      }
+    }
+  }
+
+  &__media {
+    width: 100%;
+    height: 30vh;
+    background-color: lightgray;
+    border-radius: 0.25rem;
+    object-fit: cover;
+
+    @include tablet {
+      height: 30vw;
+    }
+
+    @include desktop {
+      max-width: 50rem;
+      max-height: 37.5rem;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    padding-top: 0.5rem;
+
+    &-icon {
+      height: 1.5rem;
+
+      &:last-of-type {
+        margin-left: auto;
+      }
+    }
+  }
+
+  &__comments {
+    background-color: lightgray;
+    border: 1px solid black;
+    padding: 0.25rem;
+  }
+
+  &:last-of-type {
+    border-bottom: none;
+    padding-bottom: 2rem;
+  }
+}

@@ -1,0 +1,23 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixins" as *;
+
+.funding {
+  padding-top: 1rem;
+  @include flex-column;
+  gap: 1rem;
+
+  &-status {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__error-text {
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,0 +1,56 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixins" as *;
+
+.comment-form {
+  display: flex;
+  gap: 1rem;
+  padding-top: 0.75rem;
+  width: 100%;
+
+  @include desktop {
+    max-width: 50rem;
+  }
+
+  &__avatar {
+    @include avatar;
+  }
+
+  &__input {
+    border: none;
+    width: 85%;
+    text-indent: 0.25rem;
+
+    @include tablet {
+      background-color: $webapp-bg;
+    }
+
+    @include desktop {
+      width: 90%;
+    }
+
+    &--validate {
+      border: solid 1px $input-error;
+      border-radius: 4px;
+    }
+
+    &::placeholder {
+      font-size: 0.85rem;
+      @include font-style;
+    }
+
+    &:focus {
+      outline: solid 1.5px $input-focus;
+      border-radius: 4px;
+    }
+  }
+
+  &__button {
+    color: none;
+    border: none;
+    background-color: transparent;
+    &-icon {
+      width: 1.5rem;
+    }
+  }
+}
