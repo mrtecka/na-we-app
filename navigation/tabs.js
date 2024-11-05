@@ -1,8 +1,5 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/tab";
-import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import PostsScreen from "../screens/PostsScreen";
 import ProjectsScreen from "../screens/ProjectsScreen";
 import CreateScreen from "../screens/CreateScreen";
@@ -11,9 +8,19 @@ import ProfileScreen from "../screens/ProfileScreen";
 
 const Tab = createBottomTabNavigator();
 
-export default function AppNavigator() {
+export default function Tabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      tabBarOptions={{
+        showLabel: true,
+        style: {
+          position: "absolute",
+          bottom: 20,
+          elevation: 0,
+          backgroundColor: "#fff",
+        },
+      }}
+    >
       <Tab.Screen name="Posts" component={PostsScreen} />
       <Tab.Screen name="Projects" component={ProjectsScreen} />
       <Tab.Screen name="Create" component={CreateScreen} />
@@ -22,13 +29,3 @@ export default function AppNavigator() {
     </Tab.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    color: "#fff",
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
