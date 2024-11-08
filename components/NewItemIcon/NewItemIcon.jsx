@@ -1,10 +1,27 @@
-import "./NewItemIcon.scss";
-import addIcon from "../../assets/icons/add.svg";
+import { StyleSheet, View, Image } from "react-native";
+import { TouchableOpacity } from "react-native";
 
-export default function NewItemIcon({ handleCreateLink }) {
+export default function NewItemIcon({ children, onPress }) {
   return (
-    <div className="new-item" onClick={handleCreateLink}>
-      <img src={addIcon} alt="plus" className="new-item__icon" />
-    </div>
+    <TouchableOpacity
+      style={{
+        top: -30,
+        justifyContent: "center",
+        alignItems: "center",
+        // ...styles.shadow,
+      }}
+      onPress={onPress}
+    >
+      <View
+        style={{
+          width: 60,
+          height: 60,
+          borderRadius: 50,
+          backgroundColor: "#f05a24",
+        }}
+      >
+        {children}
+      </View>
+    </TouchableOpacity>
   );
 }

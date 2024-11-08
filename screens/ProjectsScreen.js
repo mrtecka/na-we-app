@@ -1,10 +1,37 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
+import NaWe from "../assets/logos/nawe.png";
 
 export default function ProjectsScreen() {
   return (
-    <View>
-      <Text>Projects Screen</Text>
+    <View style={styles.container}>
+      <Image source={NaWe} style={{ height: 30, objectFit: "contain" }} />
+      <Text style={styles.text}>Projects that transform lives</Text>
+      <Text style={styles.paragraph}>
+        {" "}
+        Will contain another header to filter projects based on Status
+      </Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    color: "#fff",
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 15,
+    gap: 10,
+  },
+  text: {
+    color: "orangered",
+    fontSize: 25,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  paragraph: {
+    textAlign: "center",
+  },
+});
