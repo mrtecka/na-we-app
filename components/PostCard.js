@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
-// import { vh } from "react-native-viewport-units";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import NaWe from "../../assets/icons/nawe.png";
-import avatar from "../../assets/images/jdough.jpg";
-// import CommentSection from "../CommentSection/CommentSection";
-import { timeAGo } from "../../utils/timeAGo";
+import NaWe from "../assets/icons/nawe-icon.png";
+import avatar from "../assets/images/jdough.jpg";
+import CommentSection from "./CommentSection";
+import { timeAGo } from "../utils/timeAGo";
 
 export default function PostCard({ caption, media, id, posts, dateTime }) {
   const timestamp = timeAGo(dateTime);
@@ -16,7 +15,7 @@ export default function PostCard({ caption, media, id, posts, dateTime }) {
         <Image source={avatar} style={styles.avatar} />
         <View style={styles.metadataText}>
           <Text>Tecka B</Text>
-          <Text>{timestamp}</Text>
+          <Text style={styles.timestamp}>{timestamp}</Text>
         </View>
       </View>
       <Text style={styles.caption}>{caption}</Text>
@@ -25,11 +24,10 @@ export default function PostCard({ caption, media, id, posts, dateTime }) {
         <View style={styles.iconsLeft}>
           <Icon name="favorite-outline" size={25} color="black" />
           <Image source={NaWe} style={styles.naweIcon} />
-          <Icon name="folder" size={25} color="#f05a24" />
         </View>
         <Icon name="bookmark-outline" size={25} color="black" />
       </View>
-      {/* <CommentSection postId={id} posts={posts} /> */}
+      <CommentSection postId={id} posts={posts} />
     </View>
   );
 }
@@ -55,6 +53,10 @@ const styles = StyleSheet.create({
   },
   metadataText: {
     flex: 1,
+    gap: 2.5,
+  },
+  timestamp: {
+    color: "#7f7f7f",
   },
   avatar: {
     width: 40,
@@ -80,6 +82,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
+    paddingBottom: 10,
   },
   iconsLeft: {
     flex: 1,
@@ -87,8 +90,8 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   naweIcon: {
-    height: 20,
-    // width: "20%",
+    height: 22.5,
+    width: "10%",
     objectFit: "contain",
   },
 });

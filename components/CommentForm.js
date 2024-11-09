@@ -2,7 +2,7 @@ import "./CommentForm.scss";
 import { useState, useEffect } from "react";
 import avatar from "../../assets/images/spidy.jpg";
 import planeIcon from "../../assets/icons/paper-plane.svg";
-import { addComment } from "../../utils/apiCalls";
+import { addComment } from "../utils/apiCalls";
 
 export default function CommentForm({ postId, fetchComments }) {
   const [commentInput, setCommentInput] = useState("");

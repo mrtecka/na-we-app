@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View, StyleSheet, Image, Button } from "react-native";
-import NaWe from "../assets/icons/nawe.png";
+import NaWe from "../assets/icons/nawe-icon.png";
 
 export default function CreateScreen() {
   return (

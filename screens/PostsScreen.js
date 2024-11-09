@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 import { getAllPosts } from "../utils/apiCalls";
-import PostCard from "../components/PostCard/PostCard";
+import PostCard from "../components/PostCard";
 
 // import Project from "../assets/images/bad_transformer_cinco_ranch.png";
 
@@ -38,13 +38,13 @@ export default function PostsScreen() {
       </View>
       {posts.map((post) => (
         <PostCard
-          style={styles.post}
           key={post.id}
           caption={post.caption}
           media={post.media}
           id={post.id}
           posts={posts}
           dateTime={post.created_at}
+          style={styles.post}
         />
       ))}
     </ScrollView>
