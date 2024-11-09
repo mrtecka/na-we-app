@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View, Text, Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import PostsScreen from "../screens/PostsScreen";
 import ProjectsScreen from "../screens/ProjectsScreen";
@@ -17,15 +17,7 @@ export default function Tabs() {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
-          position: "absolute",
-          bottom: 0,
-          left: 5,
-          right: 5,
-          elevation: 0,
-          backgroundColor: "#ffffff",
-          borderRadius: 15,
-          height: 90,
-          ...styles.shadow,
+          ...styles.tab,
         },
       }}
     >
@@ -65,8 +57,19 @@ export default function Tabs() {
         name="Create"
         component={CreateScreen}
         options={{
-          tabBarIconStyle: { display: "none" },
-          tabBarButton: (props) => <NewItemIcon {...props} />,
+          // tabBarIcon: ({ focused }) => <View></View>,
+          // tabBarIconStyle: { display: "none" },
+          tabBarIcon: (props) => <NewItemIcon {...props} />,
+          headerTitle: () => (
+            <View style={styles.header}>
+              <Text>Nevermind</Text>
+              <Text style={styles.pageTitle}>Create</Text>
+              <Text style={styles.pageTitleButton}>Post</Text>
+            </View>
+          ),
+          headerTitleStyle: {
+            color: "red",
+          },
         }}
       />
       <Tab.Screen
@@ -107,7 +110,15 @@ export default function Tabs() {
 }
 
 const styles = StyleSheet.create({
-  shadow: {
+  tab: {
+    position: "absolute",
+    bottom: 0,
+    left: 5,
+    right: 5,
+    elevation: 0,
+    backgroundColor: "#ffffff",
+    borderRadius: 15,
+    height: 90,
     shadowColor: "#7F5DF0",
     shadowOffset: {
       width: 0,
@@ -116,5 +127,29 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.5,
     elevation: 5,
+  },
+  header: {
+    flex: 1,
+    paddingRight: 5,
+    paddingLeft: 5,
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  pageTitle: {
+    fontWeight: "bold",
+    fontSize: 17,
+  },
+  pageTitleButton: {
+    backgroundColor: "#f05a24",
+    paddingTop: 5,
+    paddingBottom: 5,
+    paddingRight: 10,
+    paddingLeft: 10,
+    borderRadius: 15,
+    overflow: "hidden",
+    color: "#fff",
+    fontSize: 16,
   },
 });

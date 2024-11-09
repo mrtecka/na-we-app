@@ -2,7 +2,7 @@ import { View } from "react-native";
 import { TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-export default function NewItemIcon({ children }) {
+export default function NewItemIcon({ children, onPress }) {
   return (
     <TouchableOpacity
       style={{
@@ -18,6 +18,7 @@ export default function NewItemIcon({ children }) {
         shadowRadius: 3.5,
         elevation: 5,
       }}
+      onPress={onPress}
     >
       <View
         style={{

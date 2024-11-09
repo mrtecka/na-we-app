@@ -1,6 +1,6 @@
 import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
-import NaWe from "../assets/logos/nawe-white2.png";
+import { Text, View, StyleSheet, Image, Button } from "react-native";
+import NaWe from "../assets/logos/nawe.png";
 
 export default function CreateScreen() {
   return (
@@ -18,20 +18,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     color: "#fff",
-    backgroundColor: "#fff",
+    backgroundColor: "#f6f6f6",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "orangered",
     padding: 15,
     gap: 10,
   },
   text: {
-    color: "white",
+    color: "orangered",
     fontSize: 25,
     fontWeight: "bold",
+    textAlign: "center",
   },
   paragraph: {
     textAlign: "center",
-    color: "white",
   },
 });
