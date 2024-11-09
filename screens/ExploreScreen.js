@@ -19,8 +19,7 @@ export default function ExploreScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    color: "#fff",
-    backgroundColor: "#fff",
+    backgroundColor: "#f6f6f6",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "orangered",

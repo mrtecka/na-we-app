@@ -6,8 +6,7 @@ import ProjectsScreen from "../screens/ProjectsScreen";
 import CreateScreen from "../screens/CreateScreen";
 import ExploreScreen from "../screens/ExploreScreen";
 import ProfileScreen from "../screens/ProfileScreen";
-import HomeIcon from "../assets/icons/search-normal.png";
-import PlusIcon from "../assets/icons/add.png";
+import Icon from "react-native-vector-icons/MaterialIcons";
 import NewItemIcon from "../components/NewItemIcon/NewItemIcon";
 
 const Tab = createBottomTabNavigator();
@@ -16,7 +15,7 @@ export default function Tabs() {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarShowLabel: true,
+        tabBarShowLabel: false,
         tabBarStyle: {
           position: "absolute",
           bottom: 0,
@@ -26,6 +25,7 @@ export default function Tabs() {
           backgroundColor: "#ffffff",
           borderRadius: 15,
           height: 90,
+          ...styles.shadow,
         },
       }}
     >
@@ -33,40 +33,88 @@ export default function Tabs() {
         name="Posts"
         component={PostsScreen}
         options={{
-          TabBarIcon: ({ focused, color, size }) => (
+          tabBarIcon: ({ focused }) => (
             <View>
-              <HomeIcon width="24" height="24" />
+              <Icon
+                name="home"
+                size={25}
+                color={focused ? "#f05a24" : "#7F7F7F"}
+                style={{ paddingBottom: 5, paddingTop: 5 }}
+              />
             </View>
           ),
         }}
       />
-      <Tab.Screen name="Projects" component={ProjectsScreen} />
+      <Tab.Screen
+        name="Projects"
+        component={ProjectsScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View>
+              <Icon
+                name="task"
+                size={25}
+                color={focused ? "#f05a24" : "#7F7F7F"}
+                style={{ paddingBottom: 5, paddingTop: 5 }}
+              />
+            </View>
+          ),
+        }}
+      />
       <Tab.Screen
         name="Create"
         component={CreateScreen}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <Image
-              source={PlusIcon}
-              resizeMode="contain"
-              style={{ width: 30, height: 30, tintColor: "#fff" }}
-            />
-          ),
+          tabBarIconStyle: { display: "none" },
           tabBarButton: (props) => <NewItemIcon {...props} />,
         }}
       />
-      <Tab.Screen name="Explore" component={ExploreScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen
+        name="Explore"
+        component={ExploreScreen}
+        style={{ justifyContent: "center", alignItems: "center" }}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View>
+              <Icon
+                name="public"
+                size={25}
+                color={focused ? "#f05a24" : "#7F7F7F"}
+                style={{ paddingBottom: 5, paddingTop: 5 }}
+              />
+            </View>
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View>
+              <Icon
+                name="person"
+                size={25}
+                color={focused ? "#f05a24" : "#7F7F7F"}
+                style={{ paddingBottom: 5, paddingTop: 5 }}
+              />
+            </View>
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     color: "#fff",
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-// });
+const styles = StyleSheet.create({
+  shadow: {
+    shadowColor: "#7F5DF0",
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.5,
+    elevation: 5,
+  },
+});
