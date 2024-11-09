@@ -1,37 +1,94 @@
-import "./PostCard.scss";
-import naweIcon from "../../assets/icons/nawe.svg";
-import likeIcon from "../../assets/icons/like.svg";
+import React, { useState, useEffect } from "react";
+import { Text, View, StyleSheet, Image } from "react-native";
+// import { vh } from "react-native-viewport-units";
+import Icon from "react-native-vector-icons/MaterialIcons";
+import NaWe from "../../assets/icons/nawe.png";
 import avatar from "../../assets/images/jdough.jpg";
-import bookmarkIcon from "../../assets/icons/bookmark.svg";
-import CommentSection from "../CommentSection/CommentSection";
-import { Link } from "react-router-dom";
+// import CommentSection from "../CommentSection/CommentSection";
 import { timeAGo } from "../../utils/timeAGo";
 
 export default function PostCard({ caption, media, id, posts, dateTime }) {
   const timestamp = timeAGo(dateTime);
 
   return (
-    <article className="pc">
-      <div className="pc-container">
-        <div className="pc__metadata">
-          <img src={avatar} alt="" className="pc__metadata-avatar" />
-          <div className="pc__metadata-container">
-            <span className="pc__metadata-text">Tecka B</span>
-            <span className="pc__metadata-text--other">{timestamp}</span>
-          </div>
-          <img src="" alt="" className="pc__metadata-icon" />
-        </div>
-        <span className="pc__caption">{caption}</span>
-        <img src={media} alt="" className="pc__media" />
-        <div className="pc__actions">
-          <img src={likeIcon} alt="Thumbs Up" className="pc__actions-icon" />
-          <Link to="/projects/new">
-            <img src={naweIcon} alt="" className="pc__actions-icon" />
-          </Link>
-          <img src={bookmarkIcon} alt="Bookmark" className="pc__actions-icon" />
-        </div>
-        <CommentSection postId={id} posts={posts} />
-      </div>
-    </article>
+    <View style={styles.postCard}>
+      <View style={styles.metadata}>
+        <Image source={avatar} style={styles.avatar} />
+        <View style={styles.metadataText}>
+          <Text>Tecka B</Text>
+          <Text>{timestamp}</Text>
+        </View>
+      </View>
+      <Text style={styles.caption}>{caption}</Text>
+      <Image source={media} style={styles.media} />
+      <View style={styles.icons}>
+        <View style={styles.iconsLeft}>
+          <Icon name="favorite-outline" size={25} color="black" />
+          <Image source={NaWe} style={styles.naweIcon} />
+          <Icon name="folder" size={25} color="#f05a24" />
+        </View>
+        <Icon name="bookmark-outline" size={25} color="black" />
+      </View>
+      {/* <CommentSection postId={id} posts={posts} /> */}
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  postCard: {
+    flex: 1,
+    justifyContent: "center",
+    padding: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: "#00000033",
+    gap: 5,
+  },
+  container: {
+    marginBottom: 90,
+    backgroundColor: "#f6f6f6",
+  },
+  metadata: {
+    flex: 1,
+    flexDirection: "row",
+    gap: 15,
+    paddingBottom: 10,
+  },
+  metadataText: {
+    flex: 1,
+  },
+  avatar: {
+    width: 40,
+    height: 40,
+    borderRadius: "50%",
+  },
+  post: {
+    flex: 1,
+    justifyContent: "center",
+    padding: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: "#00000033",
+    gap: 5,
+  },
+  media: {
+    height: 200,
+    width: "100%",
+    objectFit: "cover",
+    borderRadius: 10,
+    alignSelf: "center",
+  },
+  icons: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  iconsLeft: {
+    flex: 1,
+    flexDirection: "row",
+    gap: 10,
+  },
+  naweIcon: {
+    height: 20,
+    // width: "20%",
+    objectFit: "contain",
+  },
+});
