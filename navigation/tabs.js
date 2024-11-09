@@ -7,6 +7,7 @@ import CreateScreen from "../screens/CreateScreen";
 import ExploreScreen from "../screens/ExploreScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import NaWe from "../assets/logos/logo.png";
 import NewItemIcon from "../components/NewItemIcon/NewItemIcon";
 
 const Tab = createBottomTabNavigator();
@@ -35,6 +36,16 @@ export default function Tabs() {
               />
             </View>
           ),
+          headerTitle: () => (
+            <View style={styles.header}>
+              <Image
+                source={NaWe}
+                style={{ height: 20, width: "100%", objectFit: "contain" }}
+              />
+            </View>
+          ),
+          headerTitleStyle: {},
+          headerShadowVisible: false,
         }}
       />
       <Tab.Screen
@@ -51,6 +62,16 @@ export default function Tabs() {
               />
             </View>
           ),
+          headerTitle: () => (
+            <View style={styles.header}>
+              <Image
+                source={NaWe}
+                style={{ height: 20, width: "100%", objectFit: "contain" }}
+              />
+            </View>
+          ),
+          headerTitleStyle: {},
+          headerShadowVisible: false,
         }}
       />
       <Tab.Screen
@@ -70,6 +91,7 @@ export default function Tabs() {
           headerTitleStyle: {
             color: "red",
           },
+          headerShadowVisible: false,
         }}
       />
       <Tab.Screen
