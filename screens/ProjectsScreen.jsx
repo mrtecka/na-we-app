@@ -40,7 +40,7 @@ export default function ProjectsScreen() {
 const styles = StyleSheet.create({
   container: {
     marginBottom: 90,
-    backgroundColor: "#f6f6f6",
+    backgroundColor: "#fff",
   },
   pageTitle: {
     paddingTop: 15,

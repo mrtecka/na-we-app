@@ -1,4 +1,3 @@
-import React from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import PostsScreen from "../screens/PostsScreen";
@@ -8,7 +7,7 @@ import ExploreScreen from "../screens/ExploreScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import NaWe from "../assets/logos/logo.png";
-import NewItemIcon from "../components/NewItemIcon/NewItemIcon";
+import NewItemIcon from "../components/NewItemIcon";
 
 const Tab = createBottomTabNavigator();
 
@@ -139,7 +138,9 @@ const styles = StyleSheet.create({
     right: 5,
     elevation: 0,
     backgroundColor: "#ffffff",
-    borderRadius: 15,
+    // borderRadius: 15,
+    // borderTopWidth: 1,
+    // borderTopColor: "#00000033",
     height: 90,
     shadowColor: "#7F5DF0",
     shadowOffset: {

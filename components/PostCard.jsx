@@ -41,10 +41,6 @@ const styles = StyleSheet.create({
     borderBottomColor: "#00000033",
     gap: 5,
   },
-  container: {
-    marginBottom: 90,
-    backgroundColor: "#f6f6f6",
-  },
   metadata: {
     flex: 1,
     flexDirection: "row",

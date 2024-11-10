@@ -1,10 +1,11 @@
 import React from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
 import NaWe from "../assets/logos/nawe-white2.png";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function ExploreScreen() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Image source={NaWe} style={{ height: 30, objectFit: "contain" }} />
       <Text style={styles.text}>Explore the World's problems</Text>
       <Text style={styles.paragraph}>
@@ -12,7 +13,7 @@ export default function ExploreScreen() {
         Will provide a page where people can search for projects from all over
         the world
       </Text>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "orangered",
-    padding: 15,
+    padding: 5,
     gap: 10,
   },
   text: {
