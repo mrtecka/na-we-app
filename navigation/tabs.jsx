@@ -61,16 +61,17 @@ export default function Tabs() {
               />
             </View>
           ),
-          headerTitle: () => (
-            <View style={styles.header}>
-              <Image
-                source={NaWe}
-                style={{ height: 20, width: "100%", objectFit: "contain" }}
-              />
-            </View>
-          ),
-          headerTitleStyle: {},
-          headerShadowVisible: false,
+          // headerTitle: () => (
+          //   <View style={styles.header}>
+          //     <Image
+          //       source={NaWe}
+          //       style={{ height: 20, width: "100%", objectFit: "contain" }}
+          //     />
+          //   </View>
+          // ),
+          headerShown: false,
+          // headerTitleStyle: {},
+          // headerShadowVisible: false,
         }}
       />
       <Tab.Screen
@@ -108,6 +109,7 @@ export default function Tabs() {
               />
             </View>
           ),
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -124,6 +126,7 @@ export default function Tabs() {
               />
             </View>
           ),
+          headerShown: false,
         }}
       />
     </Tab.Navigator>

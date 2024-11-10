@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  ScrollView,
+  SafeAreaView,
+} from "react-native";
 import { getAllProjects } from "../utils/apiCalls";
 // import Project from "../assets/images/bad_transformer_cinco_ranch.png";
 
@@ -23,23 +30,25 @@ export default function ProjectsScreen() {
     );
   }
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.pageTitle}>Projects</Text>
-      {projects.map((project) => (
-        <View style={styles.project} key={project.id}>
-          <Image source={project.media} style={styles.image} />
-          <Text style={styles.location}>{project.location}</Text>
-          <Text style={styles.title}>{project.title}</Text>
-          <Text style={styles.status}>{project.status}</Text>
-        </View>
-      ))}
-    </ScrollView>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={{ marginBottom: 40 }}>
+        <Text style={styles.pageTitle}>Projects</Text>
+        {projects.map((project) => (
+          <View style={styles.project} key={project.id}>
+            <Image source={project.media} style={styles.image} />
+            <Text style={styles.location}>{project.location}</Text>
+            <Text style={styles.title}>{project.title}</Text>
+            <Text style={styles.status}>{project.status}</Text>
+          </View>
+        ))}
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 90,
+    flex: 1,
     backgroundColor: "#fff",
   },
   pageTitle: {
@@ -51,7 +60,8 @@ const styles = StyleSheet.create({
   project: {
     flex: 1,
     justifyContent: "center",
-    padding: 20,
+    paddingVertical: 20,
+    paddingHorizontal: 15,
     borderBottomWidth: 1,
     borderBottomColor: "#00000033",
     gap: 5,

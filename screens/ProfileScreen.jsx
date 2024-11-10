@@ -1,12 +1,12 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, SafeAreaView } from "react-native";
 
 export default function ProfileScreen() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.text}>Profile Page Will Go Here</Text>
       <Text> Will contain Settings and Preferences</Text>
-    </View>
+    </SafeAreaView>
   );
 }
 

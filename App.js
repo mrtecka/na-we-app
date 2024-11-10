@@ -5,7 +5,7 @@ import Tabs from "./navigation/tabs";
 
 const App = () => {
   return (
-    <NavigationContainer style={{ marginBottom: 20 }}>
+    <NavigationContainer style={{ marginBottom: 20, backgroundColor: "#fff" }}>
       <Tabs />
     </NavigationContainer>
   );
