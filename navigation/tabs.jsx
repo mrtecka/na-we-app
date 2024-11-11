@@ -15,7 +15,7 @@ export default function Tabs() {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarShowLabel: false,
+        tabBarShowLabel: true,
         tabBarStyle: {
           ...styles.tab,
         },
@@ -29,9 +29,9 @@ export default function Tabs() {
             <View>
               <Icon
                 name="home"
-                size={25}
+                size={30}
                 color={focused ? "#f05a24" : "#7F7F7F"}
-                style={{ paddingBottom: 5, paddingTop: 5 }}
+                style={{ paddingTop: 1 }}
               />
             </View>
           ),
@@ -55,9 +55,9 @@ export default function Tabs() {
             <View>
               <Icon
                 name="task"
-                size={25}
+                size={30}
                 color={focused ? "#f05a24" : "#7F7F7F"}
-                style={{ paddingBottom: 5, paddingTop: 5 }}
+                style={{ paddingTop: 1 }}
               />
             </View>
           ),
@@ -103,9 +103,9 @@ export default function Tabs() {
             <View>
               <Icon
                 name="public"
-                size={25}
+                size={30}
                 color={focused ? "#f05a24" : "#7F7F7F"}
-                style={{ paddingBottom: 5, paddingTop: 5 }}
+                style={{ paddingTop: 1 }}
               />
             </View>
           ),
@@ -120,9 +120,9 @@ export default function Tabs() {
             <View>
               <Icon
                 name="person"
-                size={25}
+                size={30}
                 color={focused ? "#f05a24" : "#7F7F7F"}
-                style={{ paddingBottom: 5, paddingTop: 5 }}
+                style={{ paddingTop: 1 }}
               />
             </View>
           ),
@@ -135,24 +135,16 @@ export default function Tabs() {
 
 const styles = StyleSheet.create({
   tab: {
-    position: "absolute",
-    bottom: 0,
-    left: 5,
-    right: 5,
-    elevation: 0,
     backgroundColor: "#ffffff",
-    // borderRadius: 15,
-    // borderTopWidth: 1,
-    // borderTopColor: "#00000033",
-    height: 90,
+    height: 60,
     shadowColor: "#7F5DF0",
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.5,
-    elevation: 5,
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 10,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 3.5,
+    // elevation: 5,
   },
   header: {
     flex: 1,

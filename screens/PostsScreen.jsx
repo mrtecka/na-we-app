@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 import { getAllPosts } from "../utils/apiCalls";
 import PostCard from "../components/PostCard";
+import { InstagramLoader } from "react-native-easy-content-loader";
 
 export default function PostsScreen() {
   const [posts, setPosts] = useState(null);
@@ -20,8 +21,8 @@ export default function PostsScreen() {
 
   if (!posts) {
     return (
-      <View>
-        <Text>Loading</Text>
+      <View style={styles.container}>
+        <InstagramLoader active />
       </View>
     );
   }
@@ -44,7 +45,7 @@ export default function PostsScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 90,
+    // marginBottom: 90,
     backgroundColor: "#fff",
   },
 });

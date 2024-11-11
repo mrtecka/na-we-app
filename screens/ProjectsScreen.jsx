@@ -6,8 +6,10 @@ import {
   Image,
   ScrollView,
   SafeAreaView,
+  Pressable,
 } from "react-native";
 import { getAllProjects } from "../utils/apiCalls";
+import { Link } from "expo-router";
 // import Project from "../assets/images/bad_transformer_cinco_ranch.png";
 
 export default function ProjectsScreen() {
@@ -34,12 +36,14 @@ export default function ProjectsScreen() {
       <ScrollView style={{ marginBottom: 40 }}>
         <Text style={styles.pageTitle}>Projects</Text>
         {projects.map((project) => (
-          <View style={styles.project} key={project.id}>
-            <Image source={project.media} style={styles.image} />
-            <Text style={styles.location}>{project.location}</Text>
-            <Text style={styles.title}>{project.title}</Text>
-            <Text style={styles.status}>{project.status}</Text>
-          </View>
+          <Link href={`/projects/${project.id}`} key={project.id}>
+            <Pressable style={styles.project} key={project.id}>
+              <Image source={project.media} style={styles.image} />
+              <Text style={styles.location}>{project.location}</Text>
+              <Text style={styles.title}>{project.title}</Text>
+              <Text style={styles.status}>{project.status}</Text>
+            </Pressable>
+          </Link>
         ))}
       </ScrollView>
     </SafeAreaView>
