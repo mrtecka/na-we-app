@@ -68,11 +68,12 @@ const styles = StyleSheet.create({
     gap: 5,
   },
   media: {
-    height: 200,
+    height: 230,
     width: "100%",
     objectFit: "cover",
-    borderRadius: 10,
+    borderRadius: 3,
     alignSelf: "center",
+    marginBottom: 5,
   },
   icons: {
     flex: 1,

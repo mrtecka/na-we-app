@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  ScrollView,
+  FlatList,
+  SafeAreaView,
+} from "react-native";
 import { getAllPosts } from "../utils/apiCalls";
 import PostCard from "../components/PostCard";
 import { InstagramLoader } from "react-native-easy-content-loader";
+import NaWe from "../assets/logos/logo.png";
 
 export default function PostsScreen() {
   const [posts, setPosts] = useState(null);
@@ -27,25 +36,37 @@ export default function PostsScreen() {
     );
   }
   return (
-    <ScrollView style={styles.container}>
-      {posts.map((post) => (
-        <PostCard
-          key={post.id}
-          caption={post.caption}
-          media={post.media}
-          id={post.id}
-          posts={posts}
-          dateTime={post.created_at}
-          style={styles.post}
+    <SafeAreaView style={styles.container}>
+      <View style={styles.pageTitle}>
+        <Image
+          source={NaWe}
+          style={{ height: 20, width: "100%", objectFit: "contain" }}
         />
-      ))}
-    </ScrollView>
+      </View>
+      <FlatList
+        data={posts}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => (
+          <PostCard
+            key={item.id}
+            caption={item.caption}
+            media={{ uri: item.media }}
+            id={item.id}
+            posts={posts}
+            dateTime={item.created_at}
+          />
+        )}
+      />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    // marginBottom: 90,
     backgroundColor: "#fff",
+    marginBottom: 30,
+  },
+  pageTitle: {
+    paddingTop: 15,
   },
 });

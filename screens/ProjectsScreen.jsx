@@ -4,12 +4,13 @@ import {
   View,
   StyleSheet,
   Image,
-  ScrollView,
   SafeAreaView,
   Pressable,
+  FlatList,
 } from "react-native";
 import { getAllProjects } from "../utils/apiCalls";
 import { Link } from "expo-router";
+import { InstagramLoader } from "react-native-easy-content-loader";
 // import Project from "../assets/images/bad_transformer_cinco_ranch.png";
 
 export default function ProjectsScreen() {
@@ -26,34 +27,36 @@ export default function ProjectsScreen() {
 
   if (!projects) {
     return (
-      <View>
-        <Text>Loading</Text>
+      <View style={styles.container}>
+        <InstagramLoader active />
       </View>
     );
   }
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={{ marginBottom: 40 }}>
-        <Text style={styles.pageTitle}>Projects</Text>
-        {projects.map((project) => (
-          <Link href={`/projects/${project.id}`} key={project.id}>
-            <Pressable style={styles.project} key={project.id}>
-              <Image source={project.media} style={styles.image} />
-              <Text style={styles.location}>{project.location}</Text>
-              <Text style={styles.title}>{project.title}</Text>
-              <Text style={styles.status}>{project.status}</Text>
-            </Pressable>
-          </Link>
-        ))}
-      </ScrollView>
+      <Text style={styles.pageTitle}>Projects</Text>
+      <FlatList
+        data={projects}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => (
+          // <Link href={`/projects/${item.id}`}>
+          <Pressable style={styles.project}>
+            <Image source={{ uri: item.media }} style={styles.image} />
+            <Text style={styles.location}>{item.location}</Text>
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.status}>{item.status}</Text>
+          </Pressable>
+          // </Link>
+        )}
+      />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#fff",
+    marginBottom: 30,
   },
   pageTitle: {
     paddingTop: 15,
@@ -71,10 +74,10 @@ const styles = StyleSheet.create({
     gap: 5,
   },
   image: {
-    height: 350,
+    height: 275,
     width: "100%",
-    objectFit: "contain",
-    borderRadius: 18,
+    objectFit: "cover",
+    borderRadius: 10,
     alignSelf: "center",
   },
   location: {

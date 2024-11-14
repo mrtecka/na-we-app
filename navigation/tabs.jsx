@@ -22,7 +22,7 @@ export default function Tabs() {
       }}
     >
       <Tab.Screen
-        name="Posts"
+        name="Home"
         component={PostsScreen}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -35,16 +35,17 @@ export default function Tabs() {
               />
             </View>
           ),
-          headerTitle: () => (
-            <View style={styles.header}>
-              <Image
-                source={NaWe}
-                style={{ height: 20, width: "100%", objectFit: "contain" }}
-              />
-            </View>
-          ),
-          headerTitleStyle: {},
-          headerShadowVisible: false,
+          headerShown: false,
+          // headerTitle: () => (
+          //   <View style={styles.postHeader}>
+          //     <Image
+          //       source={NaWe}
+          //       style={{ height: 20, width: "100%", objectFit: "contain" }}
+          //     />
+          //   </View>
+          // ),
+          // headerTitleStyle: {},
+          // headerShadowVisible: false,
         }}
       />
       <Tab.Screen
@@ -145,6 +146,10 @@ const styles = StyleSheet.create({
     // shadowOpacity: 0.25,
     // shadowRadius: 3.5,
     // elevation: 5,
+  },
+  postHeader: {
+    flex: 1,
+    flexDirection: "row",
   },
   header: {
     flex: 1,
