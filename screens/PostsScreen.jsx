@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  ScrollView,
-  FlatList,
-  SafeAreaView,
-} from "react-native";
+import { View, StyleSheet, Image, FlatList, SafeAreaView } from "react-native";
 import { getAllPosts } from "../utils/apiCalls";
 import PostCard from "../components/PostCard";
 import { InstagramLoader } from "react-native-easy-content-loader";
