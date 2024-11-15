@@ -9,7 +9,7 @@ import {
   FlatList,
 } from "react-native";
 import { getAllProjects } from "../utils/apiCalls";
-import { Link } from "expo-router";
+// import { Link } from "expo-router";
 import { InstagramLoader } from "react-native-easy-content-loader";
 // import Project from "../assets/images/bad_transformer_cinco_ranch.png";
 
@@ -27,9 +27,13 @@ export default function ProjectsScreen() {
 
   if (!projects) {
     return (
-      <View style={styles.container}>
-        <InstagramLoader active />
-      </View>
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.pageTitleLoading}>Projects</Text>
+        <View style={styles.loadingScreen}>
+          <InstagramLoader active />
+          <InstagramLoader active />
+        </View>
+      </SafeAreaView>
     );
   }
   return (
@@ -56,9 +60,15 @@ export default function ProjectsScreen() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
-    marginBottom: 30,
+    marginBottom: 45,
   },
   pageTitle: {
+    paddingVertical: 15,
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  pageTitleLoading: {
     paddingTop: 15,
     fontSize: 20,
     fontWeight: "bold",
@@ -67,7 +77,7 @@ const styles = StyleSheet.create({
   project: {
     flex: 1,
     justifyContent: "center",
-    paddingVertical: 20,
+    paddingVertical: 15,
     paddingHorizontal: 15,
     borderBottomWidth: 1,
     borderBottomColor: "#00000033",
@@ -79,6 +89,10 @@ const styles = StyleSheet.create({
     objectFit: "cover",
     borderRadius: 10,
     alignSelf: "center",
+  },
+  loadingScreen: {
+    paddingVertical: 26,
+    gap: 20,
   },
   location: {
     color: "#7f7f7f",

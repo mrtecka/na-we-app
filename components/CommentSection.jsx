@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, Image } from "react-native";
 import CommentCard from "./CommentCard";
 import { getPostComments, getAllPosts } from "../utils/apiCalls";
 // import Loading from "./Loading/Loading";
-// import CommentForm from "./CommentForm";
+import CommentForm from "./CommentForm";
 
 export default function CommentSection({ postId, posts }) {
   const [comments, setComments] = useState(null);
@@ -30,7 +30,7 @@ export default function CommentSection({ postId, posts }) {
     return (
       <View>
         <Text className="comments__text"> Be the first to respond</Text>
-        {/* <CommentForm postId={postId} fetchComments={fetchComments} /> */}
+        <CommentForm postId={postId} fetchComments={fetchComments} />
       </View>
     );
   }
@@ -56,7 +56,7 @@ export default function CommentSection({ postId, posts }) {
       >
         View all comments ({comments.length})
       </Text> */}
-      {/* <CommentForm postId={postId} fetchComments={fetchComments} /> */}
+      <CommentForm postId={postId} fetchComments={fetchComments} />
     </View>
   );
 }

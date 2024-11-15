@@ -1,25 +1,24 @@
-import "./CommentForm.scss";
 import { useState, useEffect } from "react";
-import avatar from "../../assets/images/spidy.jpg";
-import planeIcon from "../../assets/icons/paper-plane.svg";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  TextInput,
+  Button,
+  Pressable,
+} from "react-native";
+import Avatar from "../assets/images/spidy.jpg";
+import Icon from "react-native-vector-icons/MaterialIcons";
 import { addComment } from "../utils/apiCalls";
 
 export default function CommentForm({ postId, fetchComments }) {
-  const [commentInput, setCommentInput] = useState("");
+  const [comment, setComment] = useState("");
   const [commentInputValidation, setCommentInputValidation] = useState(true);
+  const [isActive, setActive] = useState(false);
 
-  const handleCommentChange = (event) => {
-    const input = event.target.value;
-    if (input.length >= 1) {
-      setCommentInputValidation(true);
-    }
-    setCommentInput(input);
-  };
-
-  const handlePostComment = (event) => {
-    event.preventDefault();
-
-    if (!commentInput) {
+  const handlePostComment = () => {
+    if (!comment) {
       setCommentInputValidation(false);
       return;
     }
@@ -38,20 +37,65 @@ export default function CommentForm({ postId, fetchComments }) {
   };
 
   return (
-    <form onSubmit={handlePostComment} action="" className="comment-form">
-      <img src={avatar} className="comment-form__avatar" />
-      <input
-        onChange={handleCommentChange}
-        type="text"
-        placeholder="How does this impact you?"
-        className={`comment-form__input ${
-          !commentInputValidation ? "comment-form__input--validate" : ""
-        }`}
-        value={commentInput}
+    <View style={styles.form}>
+      <Image
+        source={Avatar}
+        className="comment-form__avatar"
+        style={styles.avatar}
       />
-      <button className="comment-form__button" type="Submit">
-        <img src={planeIcon} alt="" className="comment-form__button-icon" />
-      </button>
-    </form>
+      <TextInput
+        onChangeText={setComment}
+        keyboardType="default"
+        placeholder="How does this impact you?"
+        onBlur={() => (setActive(false), setComment(""))}
+        onFocus={() => setActive(true)}
+        style={isActive ? [styles.inputActive] : [styles.input]}
+        // style={!commentInputValidation ? [styles.input] : [styles.inputError]}
+        value={comment}
+      />
+      <Pressable onPress={() => console.log(comment)} style={styles.button}>
+        <Icon name="send" size={25} color="#9F9F9F" />
+      </Pressable>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  form: {
+    flex: 1,
+    flexDirection: "row",
+    gap: 10,
+    alignItems: "center",
+    width: "100%",
+  },
+  avatar: {
+    width: 30,
+    height: 30,
+    borderRadius: "50%",
+  },
+  input: {
+    fontSize: 14,
+    width: "80%",
+    padding: 7.5,
+  },
+  inputActive: {
+    fontSize: 14,
+    width: "80%",
+    borderColor: "blue",
+    padding: 7,
+    borderWidth: 0.5,
+    borderRadius: 3,
+  },
+  inputError: {
+    fontSize: 14,
+    width: "80%",
+    borderColor: "red",
+    padding: 7.5,
+    borderWidth: 1,
+    borderRadius: 3,
+  },
+  button: {
+    position: "end",
+    textAlign: "flex-end",
+  },
+});

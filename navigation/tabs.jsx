@@ -6,7 +6,7 @@ import CreateScreen from "../screens/CreateScreen";
 import ExploreScreen from "../screens/ExploreScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import NaWe from "../assets/logos/logo.png";
+// import NaWe from "../assets/logos/logo.png";
 import NewItemIcon from "../components/NewItemIcon";
 
 const Tab = createBottomTabNavigator();

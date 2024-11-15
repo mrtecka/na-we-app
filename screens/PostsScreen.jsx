@@ -30,9 +30,18 @@ export default function PostsScreen() {
 
   if (!posts) {
     return (
-      <View style={styles.container}>
-        <InstagramLoader active />
-      </View>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.pageTitle}>
+          <Image
+            source={NaWe}
+            style={{ height: 20, width: "100%", objectFit: "contain" }}
+          />
+        </View>
+        <View style={styles.loadingScreen}>
+          <InstagramLoader active />
+          <InstagramLoader active />
+        </View>
+      </SafeAreaView>
     );
   }
   return (
@@ -64,9 +73,14 @@ export default function PostsScreen() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
-    marginBottom: 30,
+    marginBottom: 50,
+  },
+  loadingScreen: {
+    paddingVertical: 25,
+    gap: 20,
   },
   pageTitle: {
-    paddingTop: 15,
+    paddingVertical: 15,
+    alignItems: "center",
   },
 });
