@@ -28,11 +28,7 @@ export default function CommentForm({ postId, fetchComments }) {
 
   return (
     <View style={styles.form}>
-      <Image
-        source={Avatar}
-        className="comment-form__avatar"
-        style={styles.avatar}
-      />
+      <Image source={Avatar} style={styles.avatar} />
       <TextInput
         onChangeText={setComment}
         keyboardType="default"

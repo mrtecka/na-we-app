@@ -82,17 +82,18 @@ export default function Tabs() {
           // tabBarIcon: ({ focused }) => <View></View>,
           // tabBarIconStyle: { display: "none" },
           tabBarIcon: (props) => <NewItemIcon {...props} />,
-          headerTitle: () => (
-            <View style={styles.header}>
-              <Text>Nevermind</Text>
-              <Text style={styles.pageTitle}>Create</Text>
-              <Text style={styles.pageTitleButton}>Post</Text>
-            </View>
-          ),
-          headerTitleStyle: {
-            color: "red",
-          },
-          headerShadowVisible: false,
+          // headerTitle: () => (
+          //   <View style={styles.header}>
+          //     <Text>Nevermind</Text>
+          //     <Text style={styles.pageTitle}>Create</Text>
+          //     <Text style={styles.pageTitleButton}>Post</Text>
+          //   </View>
+          // ),
+          // headerTitleStyle: {
+          //   color: "red",
+          // },
+          // headerShadowVisible: false,
+          headerShown: false,
         }}
       />
       <Tab.Screen
