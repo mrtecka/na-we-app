@@ -4,26 +4,34 @@ import {
   TextInput,
   Pressable,
   StyleSheet,
-  SafeAreaView,
+  Image,
   Text,
-  KeyboardAvoidingView,
+  StatusBar,
 } from "react-native";
 import { FIREBASE_AUTH } from "../utils/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigation } from "@react-navigation/native";
+import GLogo from "../assets/icons/g-logo.png";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isEmailActive, setEmailActive] = useState(false);
   const [isPasswordActive, setPasswordActive] = useState(false);
+  const [isFormFilled, setFormFilled] = useState(true);
   const [loading, setLoading] = useState(false);
   const auth = FIREBASE_AUTH;
+  const navigation = useNavigation();
 
   const signIn = async () => {
     setLoading(true);
+
+    if (!email || !password) {
+      setFormFilled(false);
+      return;
+    }
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
-      //   console.log(response);
     } catch (error) {
       console.log(error);
     } finally {
@@ -32,16 +40,23 @@ export default function Login() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      {/* <KeyboardAvoidingView> */}
+    <View style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+      <Pressable style={styles.header}>
+        <Text
+          style={styles.headerText}
+          onPress={() => navigation.navigate("CreateAccount")}
+        >
+          Sign Up
+        </Text>
+      </Pressable>
       <Text style={styles.pageTitle}>Login</Text>
       <View>
         <Text style={styles.paragraph}>Welcome back</Text>
         <Text style={styles.paragraph}>
-          Enter your email and password to login
+          Enter your email and password to continue
         </Text>
       </View>
-
       <View style={styles.inputContainer}>
         <TextInput
           onChangeText={setEmail}
@@ -66,10 +81,22 @@ export default function Login() {
           onFocus={() => setPasswordActive(true)}
           style={isPasswordActive ? [styles.inputActive] : [styles.input]}
         />
+        {!isFormFilled && (
+          <Text style={{ color: "red" }}>
+            Please enter your email and password
+          </Text>
+        )}
       </View>
       <View style={styles.ctaContainer}>
         <Pressable
-          style={[styles.cta, { backgroundColor: "#F05924" }]}
+          style={[
+            styles.cta,
+            {
+              backgroundColor: "#F05924",
+              borderColor: "#F05924",
+              paddingVertical: 15,
+            },
+          ]}
           onPress={signIn}
         >
           <Text
@@ -86,12 +113,18 @@ export default function Login() {
         <Text style={{ color: "#7F7F7F", fontSize: 12, fontWeight: 500 }}>
           OR CONTINUE WITH
         </Text>
-        <Pressable style={styles.cta}>
-          <Text style={{ color: "#F05924", textAlign: "center" }}>Google</Text>
+        <Pressable
+          style={[
+            styles.cta,
+            styles.ctaIcon,
+            { borderColor: "lightgray", paddingVertical: 7.5 },
+          ]}
+        >
+          <Image source={GLogo} style={{ width: 35, height: 35 }} />
+          <Text style={{ color: "black", textAlign: "center" }}>Google</Text>
         </Pressable>
       </View>
-      {/* </KeyboardAvoidingView> */}
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -103,6 +136,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     justifyContent: "center",
     gap: 10,
+  },
+  header: {
+    paddingVertical: 25,
+    paddingHorizontal: 15,
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    alignItems: "center",
+  },
+  headerText: {
+    fontSize: 12,
+    color: "#3F3F3F",
+    fontWeight: 500,
   },
   pageTitle: {
     fontWeight: "bold",
@@ -127,33 +172,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: "lightgray",
   },
-  avatar: {
-    width: 30,
-    height: 30,
-    borderRadius: "50%",
-  },
-  label: {
-    alignSelf: "left",
-    paddingLeft: 20,
-    color: "gray",
-  },
-  input: {
-    fontSize: 14,
-    padding: 10,
-    borderWidth: 0.5,
-    borderRadius: 5,
-    borderColor: "lightgray",
-  },
   inputActive: {
     fontSize: 14,
     borderColor: "#F05924",
     padding: 10,
     borderWidth: 0.5,
     borderRadius: 5,
-  },
-  button: {
-    position: "end",
-    textAlign: "flex-end",
   },
   ctaContainer: {
     flex: 1,
@@ -166,7 +190,13 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingVertical: 15,
     borderWidth: 0.5,
-    borderColor: "#F05924",
     borderRadius: 10,
+  },
+  ctaIcon: {
+    flexDirection: "row",
+    gap: 5,
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

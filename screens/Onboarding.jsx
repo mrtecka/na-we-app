@@ -1,4 +1,11 @@
-import { View, Text, Image, StyleSheet, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Pressable,
+  StatusBar,
+} from "react-native";
 import BillBoard from "../assets/images/onboardingBillboard.jpg";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
@@ -9,6 +16,7 @@ export default function Onboarding() {
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <View style={styles.billboard}>
         <Image source={BillBoard} style={styles.billboardImage} />
         <LinearGradient

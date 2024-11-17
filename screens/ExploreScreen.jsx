@@ -1,11 +1,11 @@
-import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, StatusBar } from "react-native";
 import NaWe from "../assets/logos/nawe-white2.png";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function ExploreScreen() {
   return (
     <SafeAreaView style={styles.container}>
+      {/* <StatusBar barStyle="light-content" backgroundColor="orangered" /> */}
       <Image source={NaWe} style={{ height: 30, objectFit: "contain" }} />
       <Text style={styles.text}>Explore the World's problems</Text>
       <Text style={styles.paragraph}>
@@ -20,7 +20,7 @@ export default function ExploreScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f6f6f6",
+    // backgroundColor: "#f6f6f6",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "orangered",

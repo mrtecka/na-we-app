@@ -11,6 +11,7 @@ import {
 import { getAllProjects } from "../utils/apiCalls";
 // import { Link } from "expo-router";
 import { InstagramLoader } from "react-native-easy-content-loader";
+import { ProjectStatus } from "../components/ProjectStatus";
 // import Project from "../assets/images/bad_transformer_cinco_ranch.png";
 
 export default function ProjectsScreen() {
@@ -48,7 +49,7 @@ export default function ProjectsScreen() {
             <Image source={{ uri: item.media }} style={styles.image} />
             <Text style={styles.location}>{item.location}</Text>
             <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.status}>{item.status}</Text>
+            <ProjectStatus projectStatus={item.status} />
           </Pressable>
           // </Link>
         )}

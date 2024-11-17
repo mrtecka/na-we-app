@@ -1,8 +1,18 @@
-import { View, Text, StyleSheet, Pressable, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Pressable,
+  TextInput,
+  StatusBar,
+} from "react-native";
+import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 import { useState } from "react";
 import { FIREBASE_AUTH } from "../utils/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
+import GLogo from "../assets/icons/g-logo.png";
 
 export default function CreateAccount() {
   const [name, setName] = useState("");
@@ -13,19 +23,25 @@ export default function CreateAccount() {
   const [isEmailActive, setEmailActive] = useState(false);
   const [isPasswordActive, setPasswordActive] = useState(false);
   const [isConfirmPasswordActive, setConfirmPasswordActive] = useState(false);
+  const [isFormFilled, setFormFilled] = useState(true);
   const [loading, setLoading] = useState(false);
   const auth = FIREBASE_AUTH;
   const navigation = useNavigation();
 
   const signUp = async () => {
     setLoading(true);
+
+    if (!name || !email || !password || !confirmPassword) {
+      setFormFilled(false);
+      return;
+    }
     try {
+      setFormFilled(true);
       const response = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      // console.log(response);
     } catch (error) {
       console.log(error);
     } finally {
@@ -35,9 +51,15 @@ export default function CreateAccount() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Login</Text>
-      </View>
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+      <Pressable style={styles.header}>
+        <Text
+          style={styles.headerText}
+          onPress={() => navigation.navigate("Login")}
+        >
+          Login
+        </Text>
+      </Pressable>
       <Text style={styles.pageTitle}>Create an account</Text>
       <Text style={styles.paragraph}>
         Enter your info below to create your account
@@ -90,10 +112,20 @@ export default function CreateAccount() {
             isConfirmPasswordActive ? [styles.inputActive] : [styles.input]
           }
         />
+        {!isFormFilled && (
+          <Text style={{ color: "red" }}>Please enter your details</Text>
+        )}
       </View>
       <View style={styles.ctaContainer}>
         <Pressable
-          style={[styles.cta, { backgroundColor: "#F05924" }]}
+          style={[
+            styles.cta,
+            {
+              backgroundColor: "#F05924",
+              borderColor: "#F05924",
+              paddingVertical: 15,
+            },
+          ]}
           onPress={signUp}
         >
           <Text
@@ -110,10 +142,15 @@ export default function CreateAccount() {
         <Text style={{ color: "#7F7F7F", fontSize: 12, fontWeight: 500 }}>
           OR CONTINUE WITH
         </Text>
-        <Pressable style={styles.cta}>
-          <Text style={{ color: "#F05924", textAlign: "center" }}>
-            Sign Up with Google
-          </Text>
+        <Pressable
+          style={[
+            styles.cta,
+            styles.ctaIcon,
+            { borderColor: "lightgray", paddingVertical: 7.5 },
+          ]}
+        >
+          <Image source={GLogo} style={{ width: 35, height: 35 }} />
+          <Text style={{ color: "black", textAlign: "center" }}>Google</Text>
         </Pressable>
       </View>
     </View>
@@ -146,6 +183,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: "center",
   },
+  paragraph: {
+    textAlign: "center",
+    fontSize: 14,
+    paddingHorizontal: 10,
+    color: "#000",
+    paddingVertical: 10,
+  },
   inputContainer: {
     gap: 10,
     paddingHorizontal: 15,
@@ -164,30 +208,24 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderRadius: 5,
   },
-  pageHeader: {
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: 24,
-    color: "#fff",
-  },
-  paragraph: {
-    textAlign: "center",
-    fontSize: 14,
-    paddingHorizontal: 10,
-    color: "#000",
-    paddingVertical: 10,
-  },
   ctaContainer: {
     flex: 1,
+    paddingTop: 15,
     paddingHorizontal: 15,
     alignItems: "center",
     gap: 20,
   },
   cta: {
     width: "100%",
-    paddingVertical: 15,
+
     borderWidth: 0.5,
-    borderColor: "#F05924",
     borderRadius: 10,
+  },
+  ctaIcon: {
+    flexDirection: "row",
+    gap: 5,
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

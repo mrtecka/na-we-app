@@ -1,15 +1,7 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  Image,
-  StyleSheet,
-  Pressable,
-} from "react-native";
+import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 import BillBoard from "../assets/images/bad_transformer_cinco_ranch.png";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
-import Icon from "react-native-vector-icons/MaterialIcons";
 import oButton from "../assets/icons/onboardingButton3.png";
 
 export default function OnboardingTwo() {
@@ -22,7 +14,6 @@ export default function OnboardingTwo() {
         <LinearGradient
           colors={["transparent", "#fff"]}
           style={{ position: "absolute", width: "100%", height: "100%" }}
-          // start={{ x: 0, y: 0 }}
         />
       </View>
       <Text style={styles.pageHeader}>Make a Difference Today</Text>

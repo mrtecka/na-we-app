@@ -9,7 +9,7 @@ import CreateAccount from "../screens/CreateAccount";
 export default function OnboardingStack() {
   const Stack = createStackNavigator();
   return (
-    <Stack.Navigator>
+    <Stack.Navigator options={{ headerTintColor: "red" }}>
       <Stack.Screen
         name="Onboarding"
         component={Onboarding}

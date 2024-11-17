@@ -1,4 +1,12 @@
-import { View, Text, Image, StyleSheet, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Pressable,
+  StatusBar,
+  Platform,
+} from "react-native";
 import backgroundImage from "../assets/images/authOptionsBG.png";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
@@ -8,6 +16,10 @@ export default function AuthOptions() {
 
   return (
     <View style={styles.container}>
+      <StatusBar
+        barStyle={Platform.OS === "android" ? "light-content" : "dark-content"}
+        backgroundColor="#000"
+      />
       <View style={styles.hero}>
         <Image source={backgroundImage} style={styles.bgImage} />
         <LinearGradient
