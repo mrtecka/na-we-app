@@ -1,25 +1,29 @@
 import { View, Text, Image, StyleSheet, Pressable } from "react-native";
-import backgroundImage from "../assets/images/authOptionsBG.png";
-import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
-export default function AuthOptions() {
+export default function AuthN() {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <View style={styles.hero}>
-        <Image source={backgroundImage} style={styles.bgImage} />
-        <LinearGradient
-          colors={["transparent", "#000"]}
-          style={{ position: "absolute", width: "100%", height: "100%" }}
-        />
+      <View style={styles.header}>
+        <Icon name="arrow-back" size={20} color="gray" />
+        <Text style={styles.pageTitle}>Create an account</Text>
+        <Text> </Text>
       </View>
-      <Text style={styles.pageHeader}>Be the Change in Your Community</Text>
       <Text style={styles.paragraph}>
-        Spot Issues, Share Insights, Help Find Solutions and Provide
-        Accountability
+        Begin with creating new free account. This helps access everything on
+        NaWe.
       </Text>
+      <Pressable
+        style={[styles.cta, { backgroundColor: "#F05924" }]}
+        onPress={() => navigation.navigate("Login")}
+      >
+        <Text style={{ color: "#fff", textAlign: "center" }}>
+          Continue with Email
+        </Text>
+      </Pressable>
       <View style={styles.ctaContainer}>
         <Pressable
           style={[styles.cta, { backgroundColor: "#F05924" }]}
@@ -29,7 +33,7 @@ export default function AuthOptions() {
         </Pressable>
         <Pressable
           style={styles.cta}
-          onPress={() => navigation.navigate("CreateAccount")}
+          onPress={() => navigation.navigate("Login")}
         >
           <Text style={{ color: "#F05924", textAlign: "center" }}>
             Create Account
@@ -43,8 +47,20 @@ export default function AuthOptions() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000",
+    backgroundColor: "#FFF",
+    paddingHorizontal: 15,
     gap: 10,
+  },
+  header: {
+    paddingVertical: 15,
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  pageTitle: {
+    fontWeight: "bold",
+    fontSize: 16,
   },
   hero: {
     height: "55%",
@@ -61,9 +77,9 @@ const styles = StyleSheet.create({
   },
   paragraph: {
     textAlign: "center",
-    fontSize: 16,
+    fontSize: 14,
     paddingHorizontal: 15,
-    color: "#fff",
+    color: "#000",
   },
   ctaContainer: {
     flex: 1,

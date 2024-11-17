@@ -4,6 +4,7 @@ import Login from "../screens/Login";
 import Onboarding from "../screens/Onboarding";
 import OnboardingTwo from "../screens/OnboardingTwo";
 import AuthOptions from "../screens/AuthOptions";
+import CreateAccount from "../screens/CreateAccount";
 
 export default function OnboardingStack() {
   const Stack = createStackNavigator();
@@ -27,6 +28,11 @@ export default function OnboardingStack() {
       <Stack.Screen
         name="Login"
         component={Login}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="CreateAccount"
+        component={CreateAccount}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

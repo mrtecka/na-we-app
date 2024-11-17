@@ -24,7 +24,7 @@ export default function App() {
   return (
     <NavigationIndependentTree>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
+        <Stack.Navigator initialRouteName="OnboardingStack">
           {user ? (
             <Stack.Screen
               name="Tabs"
@@ -33,7 +33,7 @@ export default function App() {
             />
           ) : (
             <Stack.Screen
-              name="Login"
+              name="OnboardingStack"
               component={OnboardingStack}
               options={{ headerShown: false }}
             />

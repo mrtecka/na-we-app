@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   avatar: {
     width: 30,
     height: 30,
-    borderRadius: "50%",
+    borderRadius: 50,
   },
   addMediaButton: {
     width: 30,
