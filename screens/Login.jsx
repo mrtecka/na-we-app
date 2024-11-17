@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 import { FIREBASE_AUTH } from "../utils/firebase";
+import backgroundImage from "../assets/images/authOptionsBG.png";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff",
-    marginHorizontal: 15,
+    // marginHorizontal: 15,
   },
   inputContainer: { width: "100%", gap: 10, alignItems: "center" },
   avatar: {

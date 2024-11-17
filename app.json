@@ -5,6 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icons/nawe-icon.png",
+    "newArchEnabled": true,
     "userInterfaceStyle": "light",
     "scheme": "your-app-scheme",
     "splash": {
@@ -22,7 +23,8 @@
       }
     },
     "web": {
-      "favicon": "./assets/icons/nawe-icon.png"
+      "favicon": "./assets/icons/nawe-icon.png",
+      "bundler": "metro"
     },
     "plugins": ["expo-router"]
   }

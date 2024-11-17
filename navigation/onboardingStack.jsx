@@ -1,8 +1,9 @@
-import { View, Text } from "react-native";
+import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "../screens/Login";
 import Onboarding from "../screens/Onboarding";
 import OnboardingTwo from "../screens/OnboardingTwo";
+import AuthOptions from "../screens/AuthOptions";
 
 export default function OnboardingStack() {
   const Stack = createStackNavigator();
@@ -19,6 +20,11 @@ export default function OnboardingStack() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
+        name="AuthOptions"
+        component={AuthOptions}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
         name="Login"
         component={Login}
         options={{ headerShown: false }}
@@ -26,3 +32,11 @@ export default function OnboardingStack() {
     </Stack.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  tab: {
+    backgroundColor: "#000",
+    height: 60,
+    shadowColor: "#7F5DF0",
+  },
+});

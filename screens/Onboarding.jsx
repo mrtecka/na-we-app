@@ -1,15 +1,7 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  Image,
-  StyleSheet,
-  Pressable,
-} from "react-native";
+import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 import BillBoard from "../assets/images/onboardingBillboard.jpg";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
-import Icon from "react-native-vector-icons/MaterialIcons";
 import oButton from "../assets/icons/onboardingButton1.png";
 
 export default function Onboarding() {
@@ -32,7 +24,7 @@ export default function Onboarding() {
         <Pressable onPress={() => navigation.navigate("OnboardingTwo")}>
           <Image source={oButton} />
         </Pressable>
-        <Pressable onPress={() => navigation.navigate("Login")}>
+        <Pressable onPress={() => navigation.navigate("AuthOptions")}>
           <Text style={{ fontSize: 16 }}>Skip</Text>
         </Pressable>
       </View>

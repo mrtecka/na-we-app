@@ -5,37 +5,44 @@ import {
   Image,
   StyleSheet,
   Pressable,
+  Button,
 } from "react-native";
 import BillBoard from "../assets/images/bad_transformer_cinco_ranch.png";
+import backgroundImage from "../assets/images/authOptionsBG.png";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import oButton from "../assets/icons/onboardingButton3.png";
 
-export default function OnboardingTwo() {
+export default function AuthOptions() {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
       <View style={styles.billboard}>
-        <Image source={BillBoard} style={styles.billboardImage} />
+        <Image source={backgroundImage} style={styles.billboardImage} />
         <LinearGradient
-          colors={["transparent", "#fff"]}
+          colors={["transparent", "#000"]}
           style={{ position: "absolute", width: "100%", height: "100%" }}
           // start={{ x: 0, y: 0 }}
         />
       </View>
-      <Text style={styles.pageHeader}>Make a Difference Today</Text>
+      <Text style={styles.pageHeader}>Be the Change in Your Community</Text>
       <Text style={styles.paragraph}>
-        Identify Local Issues and Contribute to Real Solutions
+        Spot Issues, Share Insights, and Help Fund Solutions
       </Text>
       <View style={styles.cta}>
-        <Pressable onPress={() => navigation.navigate("AuthOptions")}>
-          <Image source={oButton} />
-        </Pressable>
-        <Pressable onPress={() => navigation.navigate("AuthOptions")}>
-          <Text style={{ fontSize: 16 }}>Skip</Text>
-        </Pressable>
+        <Button
+          title="Log in"
+          color="#fff"
+          backgroundColor="#F05924"
+          onPress={() => navigation.navigate("Login")}
+        />
+        <Button
+          style={styles.ctaTransparent}
+          title="Create Account"
+          onPress={() => navigation.navigate("Login")}
+        />
       </View>
     </View>
   );
@@ -44,7 +51,7 @@ export default function OnboardingTwo() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#000",
     gap: 10,
   },
   billboard: {
@@ -59,15 +66,25 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 24,
+    paddingHorizontal: 15,
+    color: "#fff",
   },
   paragraph: {
     textAlign: "center",
     fontSize: 16,
     paddingHorizontal: 15,
-    color: "#7F7F7F",
+    color: "#fff",
   },
   cta: {
     flex: 1,
     alignItems: "center",
+  },
+  ctaTransparent: {
+    width: "100%",
+    paddingVertical: 10,
+    borderWidth: 1,
+    borderColor: "#F05924",
+    borderRadius: 30,
+    color: "white",
   },
 });
