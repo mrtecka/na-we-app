@@ -1,4 +1,3 @@
-import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "../screens/Login";
 import Onboarding from "../screens/Onboarding";
@@ -9,7 +8,7 @@ import CreateAccount from "../screens/CreateAccount";
 export default function OnboardingStack() {
   const Stack = createStackNavigator();
   return (
-    <Stack.Navigator options={{ headerTintColor: "red" }}>
+    <Stack.Navigator>
       <Stack.Screen
         name="Onboarding"
         component={Onboarding}
@@ -38,11 +37,3 @@ export default function OnboardingStack() {
     </Stack.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  tab: {
-    backgroundColor: "#000",
-    height: 60,
-    shadowColor: "#7F5DF0",
-  },
-});

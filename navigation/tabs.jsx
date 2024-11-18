@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text, Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import PostsScreen from "../screens/PostsScreen";
-import ProjectsScreen from "../screens/ProjectsScreen";
+import ProjectStack from "./projectStack";
 import CreateScreen from "../screens/CreateScreen";
 import ExploreScreen from "../screens/ExploreScreen";
 import ProfileScreen from "../screens/ProfileScreen";
@@ -36,21 +36,11 @@ export default function Tabs() {
             </View>
           ),
           headerShown: false,
-          // headerTitle: () => (
-          //   <View style={styles.postHeader}>
-          //     <Image
-          //       source={NaWe}
-          //       style={{ height: 20, width: "100%", objectFit: "contain" }}
-          //     />
-          //   </View>
-          // ),
-          // headerTitleStyle: {},
-          // headerShadowVisible: false,
         }}
       />
       <Tab.Screen
         name="Projects"
-        component={ProjectsScreen}
+        component={ProjectStack}
         options={{
           tabBarIcon: ({ focused }) => (
             <View>
@@ -62,37 +52,14 @@ export default function Tabs() {
               />
             </View>
           ),
-          // headerTitle: () => (
-          //   <View style={styles.header}>
-          //     <Image
-          //       source={NaWe}
-          //       style={{ height: 20, width: "100%", objectFit: "contain" }}
-          //     />
-          //   </View>
-          // ),
           headerShown: false,
-          // headerTitleStyle: {},
-          // headerShadowVisible: false,
         }}
       />
       <Tab.Screen
         name="Create"
         component={CreateScreen}
         options={{
-          // tabBarIcon: ({ focused }) => <View></View>,
-          // tabBarIconStyle: { display: "none" },
           tabBarIcon: (props) => <NewItemIcon {...props} />,
-          // headerTitle: () => (
-          //   <View style={styles.header}>
-          //     <Text>Nevermind</Text>
-          //     <Text style={styles.pageTitle}>Create</Text>
-          //     <Text style={styles.pageTitleButton}>Post</Text>
-          //   </View>
-          // ),
-          // headerTitleStyle: {
-          //   color: "red",
-          // },
-          // headerShadowVisible: false,
           headerShown: false,
         }}
       />
@@ -140,13 +107,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     height: 60,
     shadowColor: "#7F5DF0",
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 10,
-    // },
-    // shadowOpacity: 0.25,
-    // shadowRadius: 3.5,
-    // elevation: 5,
   },
   postHeader: {
     flex: 1,

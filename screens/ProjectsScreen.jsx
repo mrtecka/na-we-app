@@ -9,6 +9,7 @@ import {
   FlatList,
 } from "react-native";
 import { getAllProjects } from "../utils/apiCalls";
+import { useNavigation } from "@react-navigation/native";
 // import { Link } from "expo-router";
 import { InstagramLoader } from "react-native-easy-content-loader";
 import { ProjectStatus } from "../components/ProjectStatus";
@@ -16,6 +17,7 @@ import { ProjectStatus } from "../components/ProjectStatus";
 
 export default function ProjectsScreen() {
   const [projects, setProjects] = useState(null);
+  const navigation = useNavigation();
 
   const fetchProjects = async () => {
     const projectsData = await getAllProjects();
@@ -45,7 +47,12 @@ export default function ProjectsScreen() {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           // <Link href={`/projects/${item.id}`}>
-          <Pressable style={styles.project}>
+          <Pressable
+            style={styles.project}
+            onPress={() =>
+              navigation.navigate("ProjectDetails", { id: item.id })
+            }
+          >
             <Image source={{ uri: item.media }} style={styles.image} />
             <Text style={styles.location}>{item.location}</Text>
             <Text style={styles.title}>{item.title}</Text>

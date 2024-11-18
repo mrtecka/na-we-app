@@ -5,7 +5,6 @@ import {
 } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Tabs from "./navigation/tabs";
-import Login from "./screens/Login";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { FIREBASE_AUTH } from "./utils/firebase";
 import OnboardingStack from "./navigation/onboardingStack";
