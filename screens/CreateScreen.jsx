@@ -21,7 +21,7 @@ export default function CreateScreen() {
   const [successfulUpload, setSuccessfulUpload] = useState(false);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.header}>
         <Text>Nevermind</Text>
         <Text style={styles.pageTitle}>Create</Text>
@@ -46,7 +46,7 @@ export default function CreateScreen() {
       <View style={styles.addMediaButton}>
         <Icon name="add" size={17.5} color="#fff" />
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 

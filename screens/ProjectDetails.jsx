@@ -1,18 +1,10 @@
 import { useEffect, useState } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  SafeAreaView,
-  ScrollView,
-} from "react-native";
+import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 import { FacebookLoader } from "react-native-easy-content-loader";
 import { ProjectStatus } from "../components/ProjectStatus";
 import { getProject } from "../utils/apiCalls";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { goBack } from "expo-router/build/global-state/routing";
 
 export default function ProjectDetails() {
   const [project, setProject] = useState(null);
@@ -32,17 +24,17 @@ export default function ProjectDetails() {
 
   if (!project) {
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <Text style={styles.pageHeader}>Project Details</Text>
         <View style={{ paddingVertical: 26, gap: 20 }}>
           <FacebookLoader active />
         </View>
-      </SafeAreaView>
+      </View>
     );
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.header}>
         <Icon
           name="arrow-back"
@@ -53,7 +45,7 @@ export default function ProjectDetails() {
         <Text style={{ fontSize: 16, fontWeight: 500 }}>Project Details</Text>
         <Text> </Text>
       </View>
-      <ScrollView style={{ paddingHorizontal: 15 }}>
+      <ScrollView>
         <Image source={{ uri: project.media }} style={styles.image} />
         <Text style={styles.projectTitle}>{project.title}</Text>
         <View style={styles.locationStatusContainer}>
@@ -64,7 +56,7 @@ export default function ProjectDetails() {
         </View>
         <Text style={{ textAlign: "justify" }}>{project.description}</Text>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -72,6 +64,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    paddingHorizontal: 15,
     // marginBottom: 45,
     gap: 25,
   },
@@ -80,7 +73,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 15,
   },
   locationStatusContainer: {
     flexDirection: "row",

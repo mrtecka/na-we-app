@@ -1,37 +1,46 @@
-import { useState } from "react";
 import {
   View,
-  TextInput,
-  Pressable,
+  Text,
   StyleSheet,
   Image,
-  Text,
+  Pressable,
+  TextInput,
   StatusBar,
 } from "react-native";
-import { FIREBASE_AUTH } from "../utils/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
+import { FIREBASE_AUTH } from "../../utils/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
-import GLogo from "../assets/icons/g-logo.png";
+import GLogo from "../../assets/icons/g-logo.png";
 
-export default function Login() {
+export default function CreateAccount() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [isNameActive, setNameActive] = useState(false);
   const [isEmailActive, setEmailActive] = useState(false);
   const [isPasswordActive, setPasswordActive] = useState(false);
+  const [isConfirmPasswordActive, setConfirmPasswordActive] = useState(false);
   const [isFormFilled, setFormFilled] = useState(true);
   const [loading, setLoading] = useState(false);
   const auth = FIREBASE_AUTH;
   const navigation = useNavigation();
 
-  const signIn = async () => {
+  const signUp = async () => {
     setLoading(true);
 
-    if (!email || !password) {
+    if (!name || !email || !password || !confirmPassword) {
       setFormFilled(false);
       return;
     }
     try {
-      const response = await signInWithEmailAndPassword(auth, email, password);
+      setFormFilled(true);
+      const response = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
     } catch (error) {
       console.log(error);
     } finally {
@@ -45,19 +54,26 @@ export default function Login() {
       <Pressable style={styles.header}>
         <Text
           style={styles.headerText}
-          onPress={() => navigation.navigate("CreateAccount")}
+          onPress={() => navigation.navigate("Login")}
         >
-          Sign Up
+          Login
         </Text>
       </Pressable>
-      <Text style={styles.pageTitle}>Login</Text>
-      <View>
-        <Text style={styles.paragraph}>Welcome back</Text>
-        <Text style={styles.paragraph}>
-          Enter your email and password to continue
-        </Text>
-      </View>
+      <Text style={styles.pageTitle}>Create an account</Text>
+      <Text style={styles.paragraph}>
+        Enter your info below to create your account
+      </Text>
       <View style={styles.inputContainer}>
+        <TextInput
+          onChangeText={setName}
+          value={name}
+          placeholder="Enter Name"
+          placeholderTextColor="gray"
+          autoCapitalize="none"
+          onBlur={() => setNameActive(false)}
+          onFocus={() => setNameActive(true)}
+          style={isNameActive ? [styles.inputActive] : [styles.input]}
+        />
         <TextInput
           onChangeText={setEmail}
           keyboardType="default"
@@ -81,10 +97,22 @@ export default function Login() {
           onFocus={() => setPasswordActive(true)}
           style={isPasswordActive ? [styles.inputActive] : [styles.input]}
         />
+        <TextInput
+          onChangeText={setConfirmPassword}
+          value={confirmPassword}
+          secureTextEntry={true}
+          keyboardType="default"
+          placeholder="Confirm Password"
+          placeholderTextColor="gray"
+          autoCapitalize="none"
+          onBlur={() => setConfirmPasswordActive(false)}
+          onFocus={() => setConfirmPasswordActive(true)}
+          style={
+            isConfirmPasswordActive ? [styles.inputActive] : [styles.input]
+          }
+        />
         {!isFormFilled && (
-          <Text style={{ color: "red" }}>
-            Please enter your email and password
-          </Text>
+          <Text style={{ color: "red" }}>Please enter your details</Text>
         )}
       </View>
       <View style={styles.ctaContainer}>
@@ -97,7 +125,7 @@ export default function Login() {
               paddingVertical: 15,
             },
           ]}
-          onPress={signIn}
+          onPress={signUp}
         >
           <Text
             style={{
@@ -107,7 +135,7 @@ export default function Login() {
               fontWeight: 600,
             }}
           >
-            Login
+            Create Account
           </Text>
         </Pressable>
         <Text style={{ color: "#7F7F7F", fontSize: 12, fontWeight: 500 }}>
@@ -159,7 +187,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     paddingHorizontal: 10,
     color: "#000",
-    paddingVertical: 5,
+    paddingVertical: 10,
   },
   inputContainer: {
     gap: 10,
@@ -188,7 +216,7 @@ const styles = StyleSheet.create({
   },
   cta: {
     width: "100%",
-    paddingVertical: 15,
+
     borderWidth: 0.5,
     borderRadius: 10,
   },

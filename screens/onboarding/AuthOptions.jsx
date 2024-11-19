@@ -1,29 +1,37 @@
-import { View, Text, Image, StyleSheet, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Pressable,
+  StatusBar,
+  Platform,
+} from "react-native";
+import backgroundImage from "../../assets/images/authOptionsBG.png";
+import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
-import Icon from "react-native-vector-icons/MaterialIcons";
 
-export default function AuthN() {
+export default function AuthOptions() {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Icon name="arrow-back" size={20} color="gray" />
-        <Text style={styles.pageTitle}>Create an account</Text>
-        <Text> </Text>
+      <StatusBar
+        barStyle={Platform.OS === "android" ? "light-content" : "dark-content"}
+        backgroundColor="#000"
+      />
+      <View style={styles.hero}>
+        <Image source={backgroundImage} style={styles.bgImage} />
+        <LinearGradient
+          colors={["transparent", "#000"]}
+          style={{ position: "absolute", width: "100%", height: "100%" }}
+        />
       </View>
+      <Text style={styles.pageHeader}>Be the Change in Your Community</Text>
       <Text style={styles.paragraph}>
-        Begin with creating new free account. This helps access everything on
-        NaWe.
+        Spot Issues, Share Insights, Help Find Solutions and Provide
+        Accountability
       </Text>
-      <Pressable
-        style={[styles.cta, { backgroundColor: "#F05924" }]}
-        onPress={() => navigation.navigate("Login")}
-      >
-        <Text style={{ color: "#fff", textAlign: "center" }}>
-          Continue with Email
-        </Text>
-      </Pressable>
       <View style={styles.ctaContainer}>
         <Pressable
           style={[styles.cta, { backgroundColor: "#F05924" }]}
@@ -33,7 +41,7 @@ export default function AuthN() {
         </Pressable>
         <Pressable
           style={styles.cta}
-          onPress={() => navigation.navigate("Login")}
+          onPress={() => navigation.navigate("CreateAccount")}
         >
           <Text style={{ color: "#F05924", textAlign: "center" }}>
             Create Account
@@ -47,20 +55,8 @@ export default function AuthN() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFF",
-    paddingHorizontal: 15,
+    backgroundColor: "#000",
     gap: 10,
-  },
-  header: {
-    paddingVertical: 15,
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  pageTitle: {
-    fontWeight: "bold",
-    fontSize: 16,
   },
   hero: {
     height: "55%",
@@ -77,9 +73,9 @@ const styles = StyleSheet.create({
   },
   paragraph: {
     textAlign: "center",
-    fontSize: 14,
+    fontSize: 16,
     paddingHorizontal: 15,
-    color: "#000",
+    color: "#fff",
   },
   ctaContainer: {
     flex: 1,

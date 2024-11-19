@@ -1,14 +1,22 @@
-import { View, Text, Image, StyleSheet, Pressable } from "react-native";
-import BillBoard from "../assets/images/bad_transformer_cinco_ranch.png";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Pressable,
+  StatusBar,
+} from "react-native";
+import BillBoard from "../../assets/images/onboardingBillboard.jpg";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
-import oButton from "../assets/icons/onboardingButton3.png";
+import oButton from "../../assets/icons/onboardingButton1.png";
 
-export default function OnboardingTwo() {
+export default function Onboarding() {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <View style={styles.billboard}>
         <Image source={BillBoard} style={styles.billboardImage} />
         <LinearGradient
@@ -16,12 +24,12 @@ export default function OnboardingTwo() {
           style={{ position: "absolute", width: "100%", height: "100%" }}
         />
       </View>
-      <Text style={styles.pageHeader}>Make a Difference Today</Text>
+      <Text style={styles.pageHeader}>Welcome to NaWe</Text>
       <Text style={styles.paragraph}>
-        Identify Local Issues and Contribute to Real Solutions
+        Spot, Share, and Support Solutions for a Better Neighborhood
       </Text>
       <View style={styles.cta}>
-        <Pressable onPress={() => navigation.navigate("AuthOptions")}>
+        <Pressable onPress={() => navigation.navigate("OnboardingTwo")}>
           <Image source={oButton} />
         </Pressable>
         <Pressable onPress={() => navigation.navigate("AuthOptions")}>
@@ -54,8 +62,8 @@ const styles = StyleSheet.create({
   paragraph: {
     textAlign: "center",
     fontSize: 16,
-    paddingHorizontal: 15,
     color: "#7F7F7F",
+    paddingHorizontal: 15,
   },
   cta: {
     flex: 1,

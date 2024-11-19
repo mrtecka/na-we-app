@@ -1,9 +1,9 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import Login from "../screens/Login";
-import Onboarding from "../screens/Onboarding";
-import OnboardingTwo from "../screens/OnboardingTwo";
-import AuthOptions from "../screens/AuthOptions";
-import CreateAccount from "../screens/CreateAccount";
+import Login from "../screens/onboarding/Login";
+import Onboarding from "../screens/onboarding/Onboarding";
+import OnboardingTwo from "../screens/onboarding/OnboardingTwo";
+import AuthOptions from "../screens/onboarding/AuthOptions";
+import CreateAccount from "../screens/onboarding/CreateAccount";
 
 export default function OnboardingStack() {
   const Stack = createStackNavigator();
