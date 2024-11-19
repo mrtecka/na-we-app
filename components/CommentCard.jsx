@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, Platform } from "react-native";
 import Avatar from "../assets/images/mandy.jpg";
 
 export default function CommentCard({ comment }) {
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   avatar: {
     height: 30,
     width: 30,
-    borderRadius: "50%",
+    borderRadius: Platform.OS === "android" ? 100 : "50%",
   },
   comment: {
     fontSize: 14,

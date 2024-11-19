@@ -1,12 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  View,
-  StyleSheet,
-  Image,
-  FlatList,
-  SafeAreaView,
-  StatusBar,
-} from "react-native";
+import { useState, useEffect } from "react";
+import { View, StyleSheet, Image, FlatList, StatusBar } from "react-native";
 import { getAllPosts } from "../utils/apiCalls";
 import PostCard from "../components/PostCard";
 import { InstagramLoader } from "react-native-easy-content-loader";
@@ -29,10 +22,7 @@ export default function PostsScreen() {
 
   if (!posts) {
     return (
-      <SafeAreaView
-        style={styles.container}
-        contentInsetAdjustmentBehavior="never"
-      >
+      <View style={styles.container} contentInsetAdjustmentBehavior="never">
         <StatusBar barStyle="dark-content" backgroundColor="#fff" />
         <View style={styles.pageTitle}>
           <Image
@@ -44,11 +34,11 @@ export default function PostsScreen() {
           <InstagramLoader active />
           <InstagramLoader active />
         </View>
-      </SafeAreaView>
+      </View>
     );
   }
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.pageTitle}>
         <Image
           source={NaWe}
@@ -69,7 +59,7 @@ export default function PostsScreen() {
           />
         )}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 

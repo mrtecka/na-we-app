@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Image } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import PostsScreen from "../screens/PostsScreen";
 import ProjectStack from "./projectStack";
@@ -6,7 +6,6 @@ import CreateScreen from "../screens/CreateScreen";
 import ExploreScreen from "../screens/ExploreScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import Icon from "react-native-vector-icons/MaterialIcons";
-// import NaWe from "../assets/logos/logo.png";
 import NewItemIcon from "../components/NewItemIcon";
 
 const Tab = createBottomTabNavigator();

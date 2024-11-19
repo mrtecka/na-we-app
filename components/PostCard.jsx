@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, Platform } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import NaWe from "../assets/icons/nawe-icon.png";
 import avatar from "../assets/images/jdough.jpg";
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   avatar: {
     width: 40,
     height: 40,
-    borderRadius: "50%",
+    borderRadius: Platform.OS === "android" ? 100 : "50%",
   },
   post: {
     flex: 1,

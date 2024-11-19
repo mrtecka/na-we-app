@@ -46,7 +46,7 @@ export default function ContributionForm({
 
     setContribution(Number(funding.amount) + Number(contribution));
 
-    console.log(projects);
+    // console.log(projects);
 
     const fundingObject = {
       goal: projects.budget,
@@ -55,7 +55,7 @@ export default function ContributionForm({
       fundId: fundId,
     };
 
-    console.log(funding);
+    // console.log(funding);
 
     const editFunding = async () => {
       await updateFunding(projectId, fundId, fundingObject);

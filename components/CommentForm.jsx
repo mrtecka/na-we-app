@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { View, StyleSheet, Image, TextInput, Pressable } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Image,
+  TextInput,
+  Pressable,
+  Platform,
+} from "react-native";
 import Avatar from "../assets/images/spidy.jpg";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { addComment } from "../utils/apiCalls";
@@ -56,7 +63,7 @@ const styles = StyleSheet.create({
   avatar: {
     width: 30,
     height: 30,
-    borderRadius: "50%",
+    borderRadius: Platform.OS === "android" ? 100 : "50%",
   },
   input: {
     fontSize: 14,
